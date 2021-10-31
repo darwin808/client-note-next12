@@ -8,7 +8,7 @@ interface IModal {
   id?: string
 }
 const customStyles = {
-  overlay: { backgroundColor: "rgba(0, 0, 0, 0.1)", zIndex: "8888" },
+  overlay: { backgroundColor: "rgba(0, 0, 0, 0.6)", zIndex: "8888" },
   content: {
     top: "50%",
     left: "50%",

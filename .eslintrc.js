@@ -27,6 +27,15 @@ module.exports = {
         ts: "never",
         tsx: "never"
       }
+    ],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        line: {
+          markers: ["/"]
+        }
+      }
     ]
   },
   settings: {

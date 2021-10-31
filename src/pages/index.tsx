@@ -6,6 +6,7 @@ import Modal from "../components/Modal"
 import { useNotes } from "../services/Notes"
 import { Api } from "../services"
 import { useSWRConfig } from "swr"
+import Button from "../components/Button"
 
 const Home: NextPage = () => {
   const { data, error, loading } = useNotes()
@@ -77,16 +78,16 @@ const Home: NextPage = () => {
     })
     .map((e: any) => <Card data={e} onClick={() => handleOpenUpdateModal(e)} />)
   return (
-    <div className="MainContainer">
+    <div className="MainContainer ">
       <Modal isOpen={modal} onRequestClose={handleClose}>
         <Card data={modalData} onSubmit={handleUpdatePost} />
       </Modal>
       <Modal isOpen={addmodal} onRequestClose={handleClose}>
         <Card data={modalData} onSubmit={handleCreatePost} />
       </Modal>
-      <h1>title</h1>
+      <h1 className="text-4xl py-4 ">Take Notes</h1>
 
-      <button onClick={handleOpenCreateModal}>ADD NOTE</button>
+      <Button onClick={handleOpenCreateModal}>ADD NOTE</Button>
       <div className="NoteContainer">{displayCards}</div>
     </div>
   )
