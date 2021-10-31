@@ -14,6 +14,8 @@ const Home: NextPage = () => {
   const [modalData, setmodalData] = React.useState()
   const { mutate } = useSWRConfig()
 
+  if (error) return <div>failed to load</div>
+  if (loading) return <div>loading...</div>
   const handleCreatePost = async ({ name, message }: any) => {
     const res = await Api.post("/notes", {
       name,
@@ -22,6 +24,7 @@ const Home: NextPage = () => {
     res.status === 200 && handleSuccesPost()
     res.status !== 200 && handleFailedPost()
   }
+
   const handleUpdatePost = async ({ name, message, id }: any) => {
     const res = await Api.patch(`/note/${id}`, {
       message
@@ -29,40 +32,50 @@ const Home: NextPage = () => {
     res.status === 200 && handleSuccesUpdate()
     res.status !== 200 && handleFailedUpdate()
   }
+
+  const handleClose = () => {
+    setmodal(false)
+    setaddmodal(false)
+    setmodalData(undefined)
+  }
   const handleSuccesPost = async () => {
     await mutate("/notes")
+    handleClose()
   }
+
   const handleFailedPost = async () => {
     await mutate("/notes")
+    handleClose()
   }
+
   const handleSuccesUpdate = async () => {
     await mutate("/notes")
+    handleClose()
   }
+
   const handleFailedUpdate = async () => {
     await mutate("/notes")
+    handleClose()
   }
 
   const handleOpenUpdateModal = (data: any) => {
     setmodal(true)
     setmodalData(data)
   }
+
   const handleOpenCreateModal = () => {
     setaddmodal(true)
     setmodalData(undefined)
   }
-  const handleClose = () => {
-    setmodal(false)
-    setaddmodal(false)
-    setmodalData(undefined)
-  }
 
-  if (error) return <div>failed to load</div>
-  if (loading) return <div>loading...</div>
-
-  const displayCards = data.map((e: any) => (
-    <Card data={e} onClick={() => handleOpenUpdateModal(e)} />
-  ))
-
+  const displayCards = data
+    .sort(function compare(a: any, b: any) {
+      const dateA: any = new Date(a.createdAt)
+      const dateB: any = new Date(b.createdAt)
+      const sortedByCreatedAt = dateB - dateA
+      return sortedByCreatedAt
+    })
+    .map((e: any) => <Card data={e} onClick={() => handleOpenUpdateModal(e)} />)
   return (
     <div className="MainContainer">
       <Modal isOpen={modal} onRequestClose={handleClose}>

@@ -4,6 +4,11 @@ const Card = ({ data, onClick, onSubmit }: any) => {
   const [name, setname] = React.useState<string | undefined>(data?.name)
   const [message, setmessage] = React.useState<string | undefined>(data?.message)
 
+  React.useEffect(() => {
+    setname(data?.name)
+    setmessage(data?.message)
+  }, [data])
+
   return (
     <div className="CardContainer">
       <div onClick={onClick} className="w-full h-full">
