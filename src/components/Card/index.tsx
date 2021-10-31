@@ -1,10 +1,17 @@
 import React from "react"
 
-const Card = () => {
+const Card = ({ data, onClick, onSubmit }: any) => {
+  const [name, setname] = React.useState<string | undefined>(data?.name)
+  const [message, setmessage] = React.useState<string | undefined>(data?.message)
+
   return (
-    <div className="w-96 h-52 bg-yellow-300  flex  flex-col ">
-      <input placeholder="name " type="text" />
-      <textarea name="" id="" cols={30} rows={10}></textarea>
+    <div className="CardContainer">
+      <div onClick={onClick} className="w-full h-full">
+        <input placeholder={name} type="text" onChange={(e: any) => setname(e.target.value)} value={name} />
+        <textarea name="" id="" cols={40} rows={10} value={message} onChange={(e: any) => setmessage(e.target.value)} />
+      </div>
+
+      <button onClick={() => onSubmit({ name, message, id: data?.id })}>SUbmit</button>
     </div>
   )
 }

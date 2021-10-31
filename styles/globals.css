@@ -22,3 +22,7 @@ a {
 .NoteContainer {
   @apply h-full w-full bg-gray-600 grid grid-cols-4;
 }
+
+.CardContainer {
+  @apply w-96 h-96 bg-yellow-300  flex  flex-col;
+}

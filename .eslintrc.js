@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "import"],
   rules: {
+    "require-jsdoc": 0,
     "no-use-before-define": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx", "tsx"] }],
