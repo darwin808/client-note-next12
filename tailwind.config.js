@@ -1,10 +1,7 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require("tailwindcss/defaultTheme")
 
 module.exports = {
-  purge: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-  ],
+  purge: ["./src/pages/**/*.{js,ts,jsx,tsx}", "./src/components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     maxHeight: {
@@ -13,30 +10,30 @@ module.exports = {
       "1/4": "25%",
       "1/2": "50%",
       "3/4": "75%",
-      full: "100%",
+      full: "100%"
     },
     minWidth: {
       0: "0",
       "7rem": "8rem",
       "1/2": "50%",
       "3/4": "75%",
-      full: "100%",
+      full: "100%"
     },
     maxWidth: {
-      "20rem": "20rem",
+      "20rem": "20rem"
     },
     screens: {
       xs: "240px",
       ...defaultTheme.screens,
-      "2xl": "1536px",
+      "2xl": "1536px"
     },
     extend: {
       zIndex: {
-        1: 1,
+        1: 1
       },
       top: {
         top30rem: "30rem",
-        top5rem: "5rem",
+        top5rem: "5rem"
       },
       height: {
         "20rem": "20rem",
@@ -45,11 +42,11 @@ module.exports = {
         "28rem": "28rem",
         "29rem": "29rem",
         "25rem": "25rem",
-        "26rem": "26rem",
+        "26rem": "26rem"
       },
       cursor: {
         pointer: "pointer",
-        notAllowed: "not-allowed",
+        notAllowed: "not-allowed"
       },
       zIndex: {
         1000: 1000,
@@ -62,7 +59,7 @@ module.exports = {
         5555: 5555,
         7777: 7777,
         8888: 8888,
-        9999: 9999,
+        9999: 9999
       },
       inset: {
         "28%": "28%",
@@ -78,11 +75,11 @@ module.exports = {
         "27rem": "27rem",
         "26rem": "26rem",
         "25rem": "25rem",
-        "-5rem": "-4.5rem",
+        "-5rem": "-4.5rem"
       },
       bg: {
         white: "#FFFFFF",
-        lightGray: "rgb(238, 238, 238)",
+        lightGray: "rgb(238, 238, 238)"
       },
       colors: {
         "light-grey": "#777777",
@@ -129,7 +126,7 @@ module.exports = {
         adminBlue: "#2962FF",
         serinoAqua: "#058CB1",
         serinoGray: "#f4f4f4",
-        yellowGreen: "#5b8e55",
+        yellowGreen: "#5b8e55"
       },
       fontFamily: {
         PoppinsMedium: ["Poppins Medium"],
@@ -143,13 +140,13 @@ module.exports = {
         OpenSans: ["OpenSans"],
         OpenSansExtraBold: ["OpenSansExtraBold"],
         OpenSansSemiBold: ["OpenSansSemiBold"],
-        QuicksandLight: ["QuicksandLight"],
+        QuicksandLight: ["QuicksandLight"]
       },
       boxShadow: {
         OgalaShadow: "0px 3px 6px #E2C391",
         InputShadow: "0px 3px 6px #E7D2AF",
         CarouselControleShadow: "0px 3px 6px #00000029",
-        CookiesShadow: "0px -3px 6px #00000029",
+        CookiesShadow: "0px -3px 6px #00000029"
       },
       fontSize: {
         NavFont: "17px",
@@ -159,7 +156,7 @@ module.exports = {
         twelvePx: "12px",
         ElevenPx: "11px",
         TenPx: "10px",
-        NinePx: "9px",
+        NinePx: "9px"
       },
       padding: {
         Padding2XL: "18rem",
@@ -167,25 +164,25 @@ module.exports = {
         Padding35rem: "35rem",
         Padding22rem: "22rem",
         Padding30: "18%",
-        Padding8Px: "8px",
+        Padding8Px: "8px"
       },
       scale: {
         Scale60: ".65",
         Scale2: "2",
         Scale21: "2.1",
         Scale23: "2.3",
-        Scale25: "2.5",
+        Scale25: "2.5"
       },
 
       margin: {
         "65vh": "65vh",
         "50vh": "50vh",
-        "35vh": "35vh",
+        "35vh": "35vh"
       },
       width: {
         "30%": "30%",
-        "38%": "38%",
-      },
+        "38%": "38%"
+      }
       // screens: {
       // xs: "240px",
 
@@ -201,11 +198,11 @@ module.exports = {
       // "2xl": "1537px",
       // => @media (min-width: 1536px) { ... }
       //  },
-    },
+    }
   },
 
   variants: {
-    extend: { backgroundColor: ["active"], scale: ["active"] },
+    extend: { backgroundColor: ["active"], scale: ["active"] }
   },
-  plugins: [require("@tailwindcss/line-clamp")],
-};
+  plugins: [require("@tailwindcss/line-clamp")]
+}
