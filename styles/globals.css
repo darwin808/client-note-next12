@@ -29,9 +29,23 @@ a {
   @apply h-full w-full bg-tertiary grid grid-cols-4 gap-4;
 }
 
+.InputContainer {
+  @apply mb-4 overflow-y-hidden px-2 overflow-x-hidden w-full h-full cursor-pointer;
+}
 .MainBtn {
   @apply py-2 bg-primary hover:bg-yellow-400 focus:bg-yellow-400 select-none text-white text-lg rounded-lg w-44 flex text-center items-center justify-center;
 }
 .CardContainer {
-  @apply w-96 h-auto rounded-xl     flex  flex-col;
+  @apply w-96 h-auto rounded-xl     flex  flex-col px-4  py-4;
+}
+.InputMain {
+  @apply bg-tertiary  px-4 outline-none ring-1 focus:ring-2  ring-primary text-black  inset-2 my-2  w-full h-10 rounded-md transition-all cursor-pointer;
+}
+
+.TextAreaMain {
+  @apply bg-tertiary rounded-md outline-none ring-1 focus:ring-2 ring-primary text-black px-4 py-1 text-xl;
+}
+
+.CardBtn {
+  @apply bg-primary py-1 rounded text-tertiary font-medium;
 }
