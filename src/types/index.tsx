@@ -1,17 +1,17 @@
 export interface IUpdatePost {
-  name: string
+  userName?: string
   message: string
   id: number | string
   e?: any
 }
 
 export interface ICreatePost {
-  name?: string
+  userName?: string
   message?: string
   e?: any
 }
 export interface CardBody {
-  name?: string
+  userName?: string
   message?: string
   id?: string
 }

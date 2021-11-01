@@ -2,18 +2,18 @@ import React from "react"
 import { CardBody, ICard } from "../../types"
 
 const Card = <T extends CardBody>({ data, onClick, onSubmit, modal }: ICard<T>) => {
-  const [name, setname] = React.useState<string | undefined>(data?.name || "")
+  const [userName, setuserName] = React.useState<string | undefined>(data?.userName || "")
   const [message, setmessage] = React.useState<string | undefined>(data?.message || "")
 
   React.useEffect(() => {
-    setname(data?.name)
+    setuserName(data?.userName)
     setmessage(data?.message)
   }, [data])
 
   return (
     <form
       action="submit"
-      onSubmit={(e) => onSubmit({ name, message, id: data?.id || "", e })}
+      onSubmit={(e) => onSubmit({ userName, message, id: data?.id || "", e })}
       className={`CardContainer px-4  py-4 ${!modal ? "bg-primary" : "bg-white"}`}
     >
       <div
@@ -24,10 +24,10 @@ const Card = <T extends CardBody>({ data, onClick, onSubmit, modal }: ICard<T>) 
       >
         <input
           disabled={!modal}
-          placeholder={name || "Your Name here...."}
+          placeholder={userName || "Your Name here...."}
           type="text"
-          onChange={(e: any) => setname(e.target.value)}
-          value={name}
+          onChange={(e: any) => setuserName(e.target.value)}
+          value={userName}
           className="bg-tertiary  px-4 outline-none ring-1 focus:ring-2  ring-primary text-black  inset-2 my-2  w-full h-10 rounded-md transition-all cursor-pointer"
         />
         <textarea
@@ -45,7 +45,7 @@ const Card = <T extends CardBody>({ data, onClick, onSubmit, modal }: ICard<T>) 
       {modal && (
         <button
           className="bg-primary py-1 rounded text-tertiary font-medium"
-          onClick={(e) => onSubmit({ name, message, id: data?.id || "", e })}
+          onClick={(e) => onSubmit({ userName, message, id: data?.id || "", e })}
         >
           Submit
         </button>
