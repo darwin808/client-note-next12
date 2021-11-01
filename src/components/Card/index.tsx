@@ -1,8 +1,9 @@
 import React from "react"
+import { CardBody, ICard } from "../../types"
 
-const Card = ({ data, onClick, onSubmit }: any) => {
-  const [name, setname] = React.useState<string | undefined>(data?.name)
-  const [message, setmessage] = React.useState<string | undefined>(data?.message)
+const Card = <T extends CardBody>({ data, onClick, onSubmit }: ICard<T>) => {
+  const [name, setname] = React.useState<string | undefined>(data?.name || "")
+  const [message, setmessage] = React.useState<string | undefined>(data?.message || "")
 
   React.useEffect(() => {
     setname(data?.name)
@@ -28,7 +29,7 @@ const Card = ({ data, onClick, onSubmit }: any) => {
         />
       </div>
 
-      <button onClick={() => onSubmit({ name, message, id: data?.id })}>SUbmit</button>
+      <button onClick={() => onSubmit({ name, message, id: data?.id || "" })}>SUbmit</button>
     </div>
   )
 }

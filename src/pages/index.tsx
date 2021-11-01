@@ -86,7 +86,7 @@ const Home: NextPage = () => {
       const sortedByCreatedAt = dateB - dateA
       return sortedByCreatedAt
     })
-    .map((e: any) => <Card data={e} onClick={() => handleOpenUpdateModal(e)} />)
+    .map((e: any) => <Card onSubmit={() => {}} data={e} onClick={() => handleOpenUpdateModal(e)} />)
 
   const showLoading = isLoading && <UI.Loader />
 
