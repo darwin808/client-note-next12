@@ -16,7 +16,9 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    zIndex: "999999"
+    zIndex: "999999",
+    background: "none",
+    border: "none"
   }
 }
 const Modal = ({ children, isOpen, onRequestClose, id }: IModal) => {

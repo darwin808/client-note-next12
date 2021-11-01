@@ -7,6 +7,8 @@ import { useNotes } from "../services/Notes"
 import { Api } from "../services"
 import { useSWRConfig } from "swr"
 import Button from "../components/Button"
+import { ICreatePost, IUpdatePost } from "../types"
+import { UI } from "../components/Ui"
 
 const Home: NextPage = () => {
   const { data, error, loading } = useNotes()
@@ -14,10 +16,13 @@ const Home: NextPage = () => {
   const [addmodal, setaddmodal] = React.useState<boolean>(false)
   const [modalData, setmodalData] = React.useState()
   const { mutate } = useSWRConfig()
+  const [isLoading, setisLoading] = React.useState<boolean>(false)
 
   if (error) return <div>failed to load</div>
-  if (loading) return <div>loading...</div>
-  const handleCreatePost = async ({ name, message }: any) => {
+  if (loading) return <UI.Loader />
+
+  const handleCreatePost = async ({ name, message }: ICreatePost) => {
+    setisLoading(true)
     const res = await Api.post("/notes", {
       name,
       message
@@ -26,7 +31,8 @@ const Home: NextPage = () => {
     res.status !== 200 && handleFailedPost()
   }
 
-  const handleUpdatePost = async ({ name, message, id }: any) => {
+  const handleUpdatePost = async ({ name, message, id }: IUpdatePost) => {
+    setisLoading(true)
     const res = await Api.patch(`/note/${id}`, {
       message
     })
@@ -41,21 +47,25 @@ const Home: NextPage = () => {
   }
   const handleSuccesPost = async () => {
     await mutate("/notes")
+    await setisLoading(false)
     handleClose()
   }
 
   const handleFailedPost = async () => {
     await mutate("/notes")
+    await setisLoading(false)
     handleClose()
   }
 
   const handleSuccesUpdate = async () => {
     await mutate("/notes")
+    await setisLoading(false)
     handleClose()
   }
 
   const handleFailedUpdate = async () => {
     await mutate("/notes")
+    await setisLoading(false)
     handleClose()
   }
 
@@ -77,15 +87,19 @@ const Home: NextPage = () => {
       return sortedByCreatedAt
     })
     .map((e: any) => <Card data={e} onClick={() => handleOpenUpdateModal(e)} />)
+
+  const showLoading = isLoading && <UI.Loader />
+
   return (
     <div className="MainContainer ">
+      {showLoading}
       <Modal isOpen={modal} onRequestClose={handleClose}>
         <Card data={modalData} onSubmit={handleUpdatePost} />
       </Modal>
       <Modal isOpen={addmodal} onRequestClose={handleClose}>
         <Card data={modalData} onSubmit={handleCreatePost} />
       </Modal>
-      <h1 className="text-4xl py-4 ">Take Notes</h1>
+      <h1 className="MainHeader">Take Notes</h1>
 
       <Button onClick={handleOpenCreateModal}>ADD NOTE</Button>
       <div className="NoteContainer">{displayCards}</div>
