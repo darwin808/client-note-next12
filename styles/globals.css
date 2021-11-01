@@ -26,7 +26,7 @@ a {
   @apply text-4xl py-4 select-none;
 }
 .NoteContainer {
-  @apply h-full w-full bg-tertiary grid grid-cols-4 gap-4;
+  @apply h-full w-full bg-tertiary grid xs:grid-cols-3 2xl:grid-cols-4 gap-4;
 }
 
 .InputContainer {
