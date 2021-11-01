@@ -20,15 +20,18 @@ a {
 @tailwind utilities;
 
 .MainContainer {
-  @apply bg-white min-h-screen w-full flex flex-col text-center items-center justify-center;
+  @apply bg-white min-h-screen w-full gap-4 flex flex-col text-center items-center justify-center;
 }
 .MainHeader {
   @apply text-4xl py-4 select-none;
 }
 .NoteContainer {
-  @apply h-full w-full bg-gray-600 grid grid-cols-4;
+  @apply h-full w-full bg-tertiary grid grid-cols-4 gap-4;
 }
 
+.MainBtn {
+  @apply py-2 bg-primary hover:bg-yellow-400 focus:bg-yellow-400 select-none text-white text-lg rounded-lg w-44 flex text-center items-center justify-center;
+}
 .CardContainer {
-  @apply w-96 h-96 bg-yellow-300  flex  flex-col;
+  @apply w-96 h-auto rounded-xl     flex  flex-col;
 }

@@ -82,9 +82,9 @@ module.exports = {
         lightGray: "rgb(238, 238, 238)"
       },
       colors: {
-        "light-grey": "#777777",
-        "input-text-color": "#989898",
-        "input-border-1": "#a9a9a9",
+        primary: "#FFCB05",
+        secondary: "#005A9C",
+        tertiary: "#FAFAFA",
         smsBlack: "#00000",
         smsGrey: "#E9E9E9",
         smsDarkGrey: "#b3b7bc",

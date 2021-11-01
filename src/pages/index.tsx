@@ -21,7 +21,8 @@ const Home: NextPage = () => {
   if (error) return <div>failed to load</div>
   if (loading) return <UI.Loader />
 
-  const handleCreatePost = async ({ name, message }: ICreatePost) => {
+  const handleCreatePost = async ({ name, message, e }: ICreatePost) => {
+    e.preventDefault()
     setisLoading(true)
     const res = await Api.post("/notes", {
       name,
@@ -31,7 +32,8 @@ const Home: NextPage = () => {
     res.status !== 200 && handleFailedPost()
   }
 
-  const handleUpdatePost = async ({ name, message, id }: IUpdatePost) => {
+  const handleUpdatePost = async ({ name, message, id, e }: IUpdatePost) => {
+    e.preventDefault()
     setisLoading(true)
     const res = await Api.patch(`/note/${id}`, {
       message
@@ -86,7 +88,9 @@ const Home: NextPage = () => {
       const sortedByCreatedAt = dateB - dateA
       return sortedByCreatedAt
     })
-    .map((e: any) => <Card onSubmit={() => {}} data={e} onClick={() => handleOpenUpdateModal(e)} />)
+    .map((e: any) => (
+      <Card onSubmit={() => {}} data={e} modal={false} onClick={() => handleOpenUpdateModal(e)} />
+    ))
 
   const showLoading = isLoading && <UI.Loader />
 
@@ -94,10 +98,10 @@ const Home: NextPage = () => {
     <div className="MainContainer ">
       {showLoading}
       <Modal isOpen={modal} onRequestClose={handleClose}>
-        <Card data={modalData} onSubmit={handleUpdatePost} />
+        <Card modal={modal} data={modalData} onSubmit={handleUpdatePost} />
       </Modal>
       <Modal isOpen={addmodal} onRequestClose={handleClose}>
-        <Card data={modalData} onSubmit={handleCreatePost} />
+        <Card data={modalData} modal={addmodal} onSubmit={handleCreatePost} />
       </Modal>
       <h1 className="MainHeader">Take Notes</h1>
 
