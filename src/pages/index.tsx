@@ -90,7 +90,13 @@ const Home: NextPage = () => {
       return sortedByCreatedAt
     })
     .map((e: any) => (
-      <Card onSubmit={() => {}} data={e} modal={false} onClick={() => handleOpenUpdateModal(e)} />
+      <Card
+        title=""
+        onSubmit={() => {}}
+        data={e}
+        modal={false}
+        onClick={() => handleOpenUpdateModal(e)}
+      />
     ))
 
   const showLoading = isLoading && <UI.Loader />
@@ -99,14 +105,14 @@ const Home: NextPage = () => {
     <div className="MainContainer ">
       {showLoading}
       <Modal isOpen={modal} onRequestClose={handleClose}>
-        <Card modal={modal} data={modalData} onSubmit={handleUpdatePost} />
+        <Card title="Update Note" modal={modal} data={modalData} onSubmit={handleUpdatePost} />
       </Modal>
       <Modal isOpen={addmodal} onRequestClose={handleClose}>
-        <Card data={modalData} modal={addmodal} onSubmit={handleCreatePost} />
+        <Card title="Create a note" data={modalData} modal={addmodal} onSubmit={handleCreatePost} />
       </Modal>
       <h1 className="MainHeader">Take Notes</h1>
 
-      <Button onClick={handleOpenCreateModal}>ADD NOTE</Button>
+      <Button onClick={handleOpenCreateModal}>Create a Note </Button>
       <div className="NoteContainer">{displayCards}</div>
     </div>
   )

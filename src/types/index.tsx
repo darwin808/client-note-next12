@@ -20,4 +20,5 @@ export interface ICard<T> {
   onClick?: (e: any) => void
   onSubmit: (e: any) => any
   modal?: boolean
+  title?: string
 }

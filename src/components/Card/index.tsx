@@ -1,7 +1,7 @@
 import React from "react"
 import { CardBody, ICard } from "../../types"
 
-const Card = <T extends CardBody>({ data, onClick, onSubmit, modal }: ICard<T>) => {
+const Card = <T extends CardBody>({ title, data, onClick, onSubmit, modal }: ICard<T>) => {
   const [userName, setuserName] = React.useState<string | undefined>(data?.userName || "")
   const [message, setmessage] = React.useState<string | undefined>(data?.message || "")
 
@@ -24,6 +24,7 @@ const Card = <T extends CardBody>({ data, onClick, onSubmit, modal }: ICard<T>) 
       onSubmit={(e) => onSubmit({ userName, message, id: data?.id || "", e })}
       className={`CardContainer ${!modal ? "bg-primary" : "bg-white"}`}
     >
+      <div className="text-center">{title}</div>
       <div
         onClick={onClick}
         className={`
