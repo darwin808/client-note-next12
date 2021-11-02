@@ -43,7 +43,7 @@ const Card = <T extends CardBody>({ data, onClick, onSubmit, modal }: ICard<T>) 
           name=""
           id=""
           placeholder={message || "Your message here..."}
-          cols={28}
+          cols={35}
           rows={10}
           value={message}
           onChange={(e: any) => setmessage(e.target.value)}

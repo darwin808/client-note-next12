@@ -11,5 +11,4 @@ const Button: FC<IButton> = ({ onClick, children }) => {
     </button>
   )
 }
-
 export default Button
