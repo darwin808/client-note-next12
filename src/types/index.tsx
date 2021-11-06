@@ -24,4 +24,11 @@ export interface ICard<T> {
   onSubmit: (e: any) => any
   modal?: boolean
   title?: string
+  setisLoading?: any
+}
+
+export interface IUploadBtn {
+  setisLoading?: any
+  picture: string[]
+  setpicture: (e: any) => void
 }

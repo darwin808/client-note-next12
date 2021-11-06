@@ -3,7 +3,14 @@ import React from "react"
 import { CardBody, ICard } from "../../types"
 import UploadBtn from "../Button/UploadBtn"
 
-const Card = <T extends CardBody>({ title, data, onClick, onSubmit, modal }: ICard<T>) => {
+const Card = <T extends CardBody>({
+  title,
+  data,
+  onClick,
+  onSubmit,
+  modal,
+  setisLoading
+}: ICard<T>) => {
   const [userName, setuserName] = React.useState<string | undefined>(data?.userName || "")
   const [message, setmessage] = React.useState<string | undefined>(data?.message || "")
   const [picture, setpicture] = React.useState<any[]>([])
@@ -21,10 +28,17 @@ const Card = <T extends CardBody>({ title, data, onClick, onSubmit, modal }: ICa
       Submit
     </button>
   )
-  const showUpload = modal && <UploadBtn picture={picture} setpicture={setpicture} />
+  const showUpload = modal && (
+    <UploadBtn setisLoading={setisLoading} picture={picture} setpicture={setpicture} />
+  )
 
   const showpictures = data?.picture?.map((e: any) => (
-    <input type="text" defaultValue={e} onClick={() => navigator.clipboard.writeText(e)} />
+    <input
+      className="InputMain"
+      type="text"
+      defaultValue={e}
+      onClick={() => navigator.clipboard.writeText(e)}
+    />
   ))
   React.useEffect(() => {
     console.log(picture, "datr")

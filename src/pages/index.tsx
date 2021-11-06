@@ -107,10 +107,22 @@ const Home: NextPage = () => {
     <div className="MainContainer ">
       {showLoading}
       <Modal isOpen={modal} onRequestClose={handleClose}>
-        <Card title="Update Note" modal={modal} data={modalData} onSubmit={handleUpdatePost} />
+        <Card
+          setisLoading={setisLoading}
+          title="Update Note"
+          modal={modal}
+          data={modalData}
+          onSubmit={handleUpdatePost}
+        />
       </Modal>
       <Modal isOpen={addmodal} onRequestClose={handleClose}>
-        <Card title="Create a note" data={modalData} modal={addmodal} onSubmit={handleCreatePost} />
+        <Card
+          setisLoading={setisLoading}
+          title="Create a note"
+          data={modalData}
+          modal={addmodal}
+          onSubmit={handleCreatePost}
+        />
       </Modal>
       <h1 className="MainHeader">Take Notes</h1>
 
