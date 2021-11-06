@@ -1,9 +1,12 @@
+/* eslint-disable react/jsx-key */
 import React from "react"
 import { CardBody, ICard } from "../../types"
+import UploadBtn from "../Button/UploadBtn"
 
 const Card = <T extends CardBody>({ title, data, onClick, onSubmit, modal }: ICard<T>) => {
   const [userName, setuserName] = React.useState<string | undefined>(data?.userName || "")
   const [message, setmessage] = React.useState<string | undefined>(data?.message || "")
+  const [picture, setpicture] = React.useState<any[]>([])
 
   React.useEffect(() => {
     setuserName(data?.userName)
@@ -13,15 +16,24 @@ const Card = <T extends CardBody>({ title, data, onClick, onSubmit, modal }: ICa
   const showButton = modal && (
     <button
       className="CardBtn"
-      onClick={(e) => onSubmit({ userName, message, id: data?.id || "", e })}
+      onClick={(e) => onSubmit({ userName, message, picture, id: data?.id || "", e })}
     >
       Submit
     </button>
   )
+  const showUpload = modal && <UploadBtn picture={picture} setpicture={setpicture} />
+
+  const showpictures = data?.picture?.map((e: any) => (
+    <input type="text" defaultValue={e} onClick={() => navigator.clipboard.writeText(e)} />
+  ))
+  React.useEffect(() => {
+    console.log(picture, "datr")
+    console.log(data)
+  }, [picture])
   return (
     <form
       action="submit"
-      onSubmit={(e) => onSubmit({ userName, message, id: data?.id || "", e })}
+      onSubmit={(e) => onSubmit({ userName, message, picture, id: data?.id || "", e })}
       className={`CardContainer ${!modal ? "bg-primary" : "bg-white"}`}
     >
       <div className="text-center">{title}</div>
@@ -50,7 +62,10 @@ const Card = <T extends CardBody>({ title, data, onClick, onSubmit, modal }: ICa
           onChange={(e: any) => setmessage(e.target.value)}
           className="TextAreaMain"
         />
+
+        {showUpload}
       </div>
+      {showpictures}
       {showButton}
     </form>
   )

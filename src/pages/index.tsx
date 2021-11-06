@@ -21,23 +21,25 @@ const Home: NextPage = () => {
   if (error) return <div>failed to load</div>
   if (loading) return <UI.Loader />
 
-  const handleCreatePost = async ({ userName, message, e }: ICreatePost) => {
+  const handleCreatePost = async ({ userName, message, picture, e }: ICreatePost) => {
     e.preventDefault()
     setisLoading(true)
     const res = await Api.post("/notes", {
       userName,
-      message
+      message,
+      picture
     })
     res.status === 200 && handleSuccesPost()
     res.status !== 200 && handleFailedPost()
   }
 
-  const handleUpdatePost = async ({ userName, message, id, e }: IUpdatePost) => {
+  const handleUpdatePost = async ({ userName, message, picture, id, e }: IUpdatePost) => {
     e.preventDefault()
     setisLoading(true)
     const res = await Api.patch(`/note/${id}`, {
       message,
-      userName
+      userName,
+      picture
     })
     res.status === 200 && handleSuccesUpdate()
     res.status !== 200 && handleFailedUpdate()
