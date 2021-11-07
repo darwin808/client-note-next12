@@ -1,3 +1,4 @@
+import React from "react"
 export interface IUpdatePost {
   userName?: string
   message: string
@@ -10,7 +11,7 @@ export interface ICreatePost {
   userName?: string
   message?: string
   picture?: string
-  e?: any
+  e?: React.FormEvent<HTMLInputElement> | undefined
 }
 export interface CardBody {
   userName?: string

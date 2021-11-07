@@ -22,7 +22,7 @@ const Home: NextPage = () => {
   if (loading) return <UI.Loader />
 
   const handleCreatePost = async ({ userName, message, picture, e }: ICreatePost) => {
-    e.preventDefault()
+    e?.preventDefault()
     setisLoading(true)
     const res = await Api.post("/notes", {
       userName,
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
   }
 
   const handleUpdatePost = async ({ userName, message, picture, id, e }: IUpdatePost) => {
-    e.preventDefault()
+    e?.preventDefault()
     setisLoading(true)
     const res = await Api.patch(`/note/${id}`, {
       message,

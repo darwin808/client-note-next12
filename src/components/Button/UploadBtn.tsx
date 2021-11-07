@@ -16,6 +16,7 @@ const UploadBtn = ({ setisLoading, picture, setpicture }: IUploadBtn) => {
   }
 
   const uploadFile = async (data: any) => {
+    const api = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
     const formData = new FormData()
 
     await Object.values(data).map(async (e: any) => {
@@ -24,10 +25,7 @@ const UploadBtn = ({ setisLoading, picture, setpicture }: IUploadBtn) => {
       formData.append("file", e)
       formData.append("upload_preset", UPLOAD_PRESET)
 
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-        formData
-      )
+      const response = await axios.post(api, formData)
 
       response.status === 200 && handleSuccessUpload(response)
       response.status !== 200 && handleFailedUpload(response)
