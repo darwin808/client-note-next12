@@ -36,7 +36,7 @@ const Home: NextPage = () => {
   const handleUpdatePost = async ({ userName, message, picture, id, e }: IUpdatePost) => {
     e?.preventDefault()
     setisLoading(true)
-    const res = await Api.patch(`/note/${id}`, {
+    const res = await Api.put(`/note/${id}`, {
       message,
       userName,
       picture
