@@ -64,6 +64,7 @@ const Card = <T extends CardBody>({
           onChange={(e: any) => setuserName(e.target.value)}
           value={userName}
           className="InputMain"
+          onClick={(e: any) => navigator.clipboard.writeText(e.target.value)}
         />
         <textarea
           disabled={!modal}
