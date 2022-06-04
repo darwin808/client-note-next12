@@ -20,13 +20,13 @@ a {
 @tailwind utilities;
 
 .MainContainer {
-  @apply bg-tertiary min-h-screen w-full gap-4 flex flex-col text-center items-center justify-center;
+  @apply bg-gray-300 min-h-screen w-full gap-4 pt-10 flex flex-col text-center items-center justify-center;
 }
 .MainHeader {
-  @apply text-4xl py-4 select-none;
+  @apply text-yellow-500 font-bold text-4xl py-4 select-none;
 }
 .NoteContainer {
-  @apply mt-4 2xl:px-20 xs:px-16 h-full w-full bg-tertiary grid xs:grid-cols-3 2xl:grid-cols-4 gap-8 justify-center;
+  @apply mt-4 2xl:px-20 xs:px-16 pb-10  h-full w-full bg-gray-300 flex flex-wrap gap-8 justify-center;
 }
 
 .CardContainer {
@@ -43,7 +43,7 @@ a {
 }
 
 .TextAreaMain {
-  @apply bg-tertiary  2xl:text-base xs:text-sm rounded-md outline-none ring-1 focus:ring-2 ring-primary text-black px-4 py-1 text-xl;
+  @apply w-full bg-tertiary  2xl:text-base xs:text-sm rounded-md outline-none ring-1 focus:ring-2 ring-primary text-black px-4 py-1 text-xl;
 }
 
 .CardBtn {

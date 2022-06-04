@@ -50,7 +50,7 @@ const Card = <T extends CardBody>({
       onSubmit={(e) => onSubmit({ userName, message, picture, id: data?.id || "", e })}
       className={`CardContainer ${!modal ? "bg-primary" : "bg-white"}`}
     >
-      <div className="text-center">{title}</div>
+      <div className="text-center font-bold text-yellow-500 text-3xl">{title}</div>
       <div
         onClick={onClick}
         className={`
