@@ -126,7 +126,9 @@ const Home: NextPage = () => {
       </Modal>
       <h1 className="MainHeader">Take Notes</h1>
 
-      <Button onClick={handleOpenCreateModal}>Create a Note </Button>
+      <Button onClick={handleOpenCreateModal}>
+        <span className="font-bold text-xl">Create a Note</span>
+      </Button>
       <div className="NoteContainer">{displayCards}</div>
     </div>
   )
