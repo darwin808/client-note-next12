@@ -9,7 +9,6 @@ import { useSWRConfig } from "swr"
 import Button from "../components/Button"
 import { ICreatePost, IUpdatePost } from "../types"
 import { UI } from "../components/Ui"
-import { switchBgColor } from "utils"
 
 const Home: NextPage = () => {
   const { data, error, loading } = useNotes()
@@ -106,6 +105,26 @@ const Home: NextPage = () => {
 
   const today = new Date()
   const dayToday = today.getDay()
+  const switchBgColor = (day: number) => {
+    switch (day) {
+      case 0:
+        return "bg-red-300"
+      case 1:
+        return "bg-yellow-300"
+      case 2:
+        return "bg-pink-300"
+      case 3:
+        return "bg-green-300"
+      case 4:
+        return "bg-orange-300"
+      case 5:
+        return "bg-blue-300"
+      case 6:
+        return "bg-purple-300"
+      default:
+        return "bg-red-300"
+    }
+  }
   const todayBg = switchBgColor(dayToday)
 
   return (
