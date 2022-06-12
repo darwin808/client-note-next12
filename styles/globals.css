@@ -23,7 +23,7 @@ a {
   @apply min-h-screen w-full gap-4 pt-10 flex flex-col text-center items-center justify-center;
 }
 .MainHeader {
-  @apply text-yellow-500 font-bold text-4xl py-4 select-none;
+  @apply text-black font-bold text-4xl py-4 select-none;
 }
 .NoteContainer {
   @apply mt-4 2xl:px-20 xs:px-16 pb-10  h-full w-full  flex flex-wrap gap-8 justify-center;
