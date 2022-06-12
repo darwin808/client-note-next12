@@ -9,7 +9,7 @@ import { useSWRConfig } from "swr"
 import Button from "../components/Button"
 import { ICreatePost, IUpdatePost } from "../types"
 import { UI } from "../components/Ui"
-import * as helper from "utils"
+import { switchBgColor } from "utils"
 
 const Home: NextPage = () => {
   const { data, error, loading } = useNotes()
@@ -106,8 +106,10 @@ const Home: NextPage = () => {
 
   const today = new Date()
   const dayToday = today.getDay()
+  const todayBg = switchBgColor(dayToday)
+
   return (
-    <div className={`MainContainer   ${helper.switchBgColor(dayToday)}`}>
+    <div className={`MainContainer   ${todayBg}`}>
       {showLoading}
       <Modal isOpen={modal} onRequestClose={handleClose}>
         <Card
@@ -132,7 +134,7 @@ const Home: NextPage = () => {
       <Button onClick={handleOpenCreateModal}>
         <span className="font-bold text-xl">Create a Note</span>
       </Button>
-      <div className={`NoteContainer  ${helper.switchBgColor(dayToday)}`}>{displayCards}</div>
+      <div className={`NoteContainer  ${todayBg}`}>{displayCards}</div>
     </div>
   )
 }
