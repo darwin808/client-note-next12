@@ -9,6 +9,7 @@ import { useSWRConfig } from "swr"
 import Button from "../components/Button"
 import { ICreatePost, IUpdatePost } from "../types"
 import { UI } from "../components/Ui"
+import { CardContainer } from "components/Ui/CardContainer"
 
 const Home: NextPage = () => {
   const { data, error, loading } = useNotes()
@@ -84,22 +85,24 @@ const Home: NextPage = () => {
     setmodalData(undefined)
   }
 
-  const displayCards = data
-    .sort(function compare(a: any, b: any) {
-      const dateA: any = new Date(a.createdAt)
-      const dateB: any = new Date(b.createdAt)
-      const sortedByCreatedAt = dateB - dateA
-      return sortedByCreatedAt
-    })
-    .map((e: any) => (
-      <Card
-        title=""
-        onSubmit={() => {}}
-        data={e}
-        modal={false}
-        onClick={() => handleOpenUpdateModal(e)}
-      />
-    ))
+  // legacy to be deleted in next update
+  // console.log(data, 22222222222)
+  // const displayCards = data
+  //   .sort(function compare(a: any, b: any) {
+  //     const dateA: any = new Date(a.createdAt)
+  //     const dateB: any = new Date(b.createdAt)
+  //     const sortedByCreatedAt = dateB - dateA
+  //     return sortedByCreatedAt
+  //   })
+  //   .map((e: any) => (
+  //     <Card
+  //       title=""
+  //       onSubmit={() => {}}
+  //       data={e}
+  //       modal={false}
+  //       onClick={() => handleOpenUpdateModal(e)}
+  //     />
+  //   ))
 
   const showLoading = isLoading && <UI.Loader />
 
@@ -128,7 +131,7 @@ const Home: NextPage = () => {
   const todayBg = switchBgColor(dayToday)
 
   return (
-    <div className={`MainContainer   ${todayBg}`}>
+    <div className={`MainContainer  ${modal || addmodal ? "blur-sm" : "blur-0"}  ${todayBg}`}>
       {showLoading}
       <Modal isOpen={modal} onRequestClose={handleClose}>
         <Card
@@ -153,7 +156,10 @@ const Home: NextPage = () => {
       <Button onClick={handleOpenCreateModal}>
         <span className="font-bold text-xl">Create a Note</span>
       </Button>
-      <div className={`NoteContainer  ${todayBg}`}>{displayCards}</div>
+      {/* <div className={`NoteContainer  ${todayBg}`}>{displayCards}</div> */}
+      <div className={`NoteContainer  ${todayBg}`}>
+        <CardContainer data={data} handleOpenUpdateModal={handleOpenUpdateModal} />
+      </div>
     </div>
   )
 }
