@@ -26,7 +26,7 @@ a {
   @apply text-black font-bold text-4xl py-4 select-none;
 }
 .NoteContainer {
-  @apply mt-4 2xl:px-20 xs:px-16 pb-10  h-full w-full  flex flex-wrap gap-8 justify-center;
+  @apply mt-4 2xl:px-20 xs:px-16 pb-20  h-full w-full  flex flex-wrap gap-8 justify-center;
 }
 
 .CardContainer {
