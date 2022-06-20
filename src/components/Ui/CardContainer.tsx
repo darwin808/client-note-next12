@@ -11,12 +11,22 @@ interface Props {
 export const CardContainer = ({ data = [], handleOpenUpdateModal }: Props) => {
   const [count, setcount] = useState(9)
   const [collectect, setcollectect] = useState([])
-  //   const collection = data.slice(0, count)
+
   const fetchData = () => {
     setcount(count + 3)
   }
+
   useEffect(() => {
-    setcollectect(data.slice(0, count))
+    setcollectect(
+      data
+        ?.sort(function compare(a: any, b: any) {
+          const dateA: any = new Date(a.createdAt)
+          const dateB: any = new Date(b.createdAt)
+          const sortedByCreatedAt = dateB - dateA
+          return sortedByCreatedAt
+        })
+        .slice(0, count)
+    )
   }, [count, data])
 
   return (
@@ -33,26 +43,19 @@ export const CardContainer = ({ data = [], handleOpenUpdateModal }: Props) => {
           </p>
         }
       >
-        {collectect
-          ?.sort(function compare(a: any, b: any) {
-            const dateA: any = new Date(a.createdAt)
-            const dateB: any = new Date(b.createdAt)
-            const sortedByCreatedAt = dateB - dateA
-            return sortedByCreatedAt
-          })
-          ?.map((e: any) => {
-            return (
-              <div className="">
-                <Card
-                  title=""
-                  onSubmit={() => {}}
-                  data={e}
-                  modal={false}
-                  onClick={() => handleOpenUpdateModal(e)}
-                />
-              </div>
-            )
-          })}
+        {collectect?.map((e: any) => {
+          return (
+            <div className="">
+              <Card
+                title=""
+                onSubmit={() => {}}
+                data={e}
+                modal={false}
+                onClick={() => handleOpenUpdateModal(e)}
+              />
+            </div>
+          )
+        })}
       </InfiniteScroll>
     </div>
   )
