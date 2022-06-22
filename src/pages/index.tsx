@@ -85,25 +85,6 @@ const Home: NextPage = () => {
     setmodalData(undefined)
   }
 
-  // legacy to be deleted in next update
-  // console.log(data, 22222222222)
-  // const displayCards = data
-  //   .sort(function compare(a: any, b: any) {
-  //     const dateA: any = new Date(a.createdAt)
-  //     const dateB: any = new Date(b.createdAt)
-  //     const sortedByCreatedAt = dateB - dateA
-  //     return sortedByCreatedAt
-  //   })
-  //   .map((e: any) => (
-  //     <Card
-  //       title=""
-  //       onSubmit={() => {}}
-  //       data={e}
-  //       modal={false}
-  //       onClick={() => handleOpenUpdateModal(e)}
-  //     />
-  //   ))
-
   const showLoading = isLoading && <UI.Loader />
 
   const today = new Date()
@@ -156,8 +137,7 @@ const Home: NextPage = () => {
       <Button onClick={handleOpenCreateModal}>
         <span className="font-bold text-xl">Create a Note</span>
       </Button>
-      {/* <div className={`NoteContainer  ${todayBg}`}>{displayCards}</div> */}
-      <div className={`NoteContainer  ${todayBg}`}>
+      <div className={`${todayBg}`}>
         <CardContainer data={data} handleOpenUpdateModal={handleOpenUpdateModal} />
       </div>
     </div>
